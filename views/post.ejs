@@ -1,0 +1,39 @@
+<%- include("partials/header.ejs") %>
+<div class="container">
+<div class="py-5 text-center"> 
+    <h1 class="h2">Create a post</h1>
+    <p class="lead">Don’t wait until everything feels perfect to share your ideas. The world doesn’t need perfection—it needs honesty,
+    courage, and originality. What you write might be the spark that lights someone else’s fire. So go ahead and post it.</p>
+</div>
+
+<div class="row g-5">
+
+    <div class="col-md-12 col-lg-12">
+        <form id="myForm" action="/submit" method="POST">
+            <div class="row g-3">
+                <div class="col-sm-6"> <label for="firstName" class="form-label">Full name</label> 
+                    <input type="text" name="fName" class="form-control" id="firstName"  required>
+                </div>
+                <div class="col-6"> <label for="title" class="form-label">Title</label> 
+                    <input type="text" name="title" class="form-control" id="title" required>
+                    
+                </div>
+                <div class="col-12"> <label for="description" class="form-label">Start writing...<span class="text-body-secondary"></span></label> 
+                    <textarea name="post" class="form-control" id="description" rows="10" required></textarea>
+                </div>
+            </div>
+           
+            <hr class="my-4"> 
+            <button class="w-100 btn btn-secondary btn-lg" type="submit">Publish</button>
+        </form>
+    </div>
+    </div>
+</div>
+<script>
+    window.addEventListener('pageshow', function (event) {
+        if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
+            document.querySelector('form').reset();
+        }
+    });
+</script>
+<%- include("partials/footer.ejs") %>

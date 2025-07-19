@@ -1,0 +1,82 @@
+<%- include("partials/header.ejs") %>
+    <div class="container-fluid">
+        <div class="row g-5 mt-1">
+            <!-- Verify if edit -->
+             <% if(locals.okToEdit){ %>
+
+                    <div class="col-md-7 ms-5">
+                        <form id="myForm" action="/edit" method="POST">
+                            <input type="hidden" name="id" value="<%= locals.mainPost.id %>">
+                            <div class="row g-3">
+                                <div class="col-sm-6"> <label for="firstName" class="form-label">Full Name</label>
+                                    <input type="text" name="fName" value="<%= mainPost.author %>" class="form-control" id="firstName" required>
+                                </div>
+                                <div class="col-6"> <label for="title" class="form-label">Title</label>
+                                    <input type="text" name="title" value="<%= mainPost.title %>" class="form-control" id="title" required>
+                
+                                </div>
+                                <div class="col-12"> <label for="description" class="form-label">Start writing...<span
+                                            class="text-body-secondary"></span></label>
+                                    <textarea name="post" class="form-control" id="description" rows="10" required><%= mainPost.description %></textarea>
+                                </div>
+                            </div>
+                            <button class="w-100 btn btn-secondary btn-lg" type="submit">Edit</button>
+                        </form>
+                    </div>
+                      
+                <% }else{ %>
+                    
+            <!-- Main post part -->
+            <div class="col-md-7 ms-5">
+                <article class="blog-post">
+                    <% var postsData = locals.postsData %>
+                    <% if (locals.mainPost){ %>
+                        <% var postToShow = locals.mainPost  %>
+                    <% } else{ %>
+                        <% var postToShow=locals.postsData[postsData.length-1] %>
+                    <%} %>
+                    <h2 class="display-5 link-body-emphasis mb-1"><%= postToShow.title %></h2>
+                    <p class="blog-post-meta"><%= postToShow.date %> by <a href="https://www.google.com/search?q=<%= postToShow.author %>"><%= postToShow.author %></a></p>
+                    <p><%= postToShow.description %></p>
+                </article>
+            </div>
+            <div class="col-md-1 dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list"
+                        viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5">
+                        </path>                
+                    </svg>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/fill/<%= postToShow.id %>">Edit</a></li>
+                    <li><a class="dropdown-item" href="/delete/<%= postToShow.id %>">Delete</a></li>
+                </ul>        
+            </div>
+            <% } %>
+
+            <div class="col-md-3 ms-auto">
+                <div class="position-sticky" style="top: 2rem;">
+                    <div>
+                        <h4 class="fst-italic">Recent posts</h4>
+                        <ul class="list-unstyled">
+
+                            <% for (var i=(postsData.length-1); i >=0; i--){ %>
+                                <li> <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
+                                        href="/selection/<%= postsData[i].id %>">
+                                        <div class="col-lg-12">
+                                            <h6 class="mb-0"><%= postsData[i].title %></h6> <small class="text-body-secondary"><%= postsData[i].date %></small>
+                                        </div>
+                                    </a> </li>
+                        
+                            <% }%>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,103 @@
+
+<%- include("partials/header.ejs") %>
+<div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+    <div class="carousel-indicators"> <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class=""
+            aria-label="Slide 1"></button> <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"
+            aria-label="Slide 2" class=""></button> <button type="button" data-bs-target="#myCarousel"
+            data-bs-slide-to="2" aria-label="Slide 3" class="active" aria-current="true"></button> </div>
+    <div class="carousel-inner">
+        <div class="carousel-item"> <img src="./images/bg1.jpg" class="d-block w-100" style="height: 500px; object-fit: cover;">
+                <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+            </svg>
+            <div class="container">
+                <div class="carousel-caption text-start">
+                    <h1><%= postsData[postsData.length-1].title %></h1>
+                    <p class="opacity-75">Some representative placeholder content for the first slide of the carousel.
+                    </p>
+                    <p><a class="btn btn-lg btn-secondary" href="/selection/<%= postsData[postsData.length-1].id %>">Read</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item"> <img src="./images/bg2.jpg" class="d-block w-100" style="height: 500px; object-fit: cover;">
+                <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+            </svg>
+            <div class="container">
+                <div class="carousel-caption">
+                    <h1><%= postsData[postsData.length-2].title %></h1>
+                    <p>Some representative placeholder content for the second slide of the carousel.</p>
+                    <p><a class="btn btn-lg btn-secondary" href="/selection/<%= postsData[postsData.length-2].id %>">Read</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item active"> <img src="./images/bg3.jpg" class="d-block w-100" style="height: 500px; object-fit: cover;">
+                <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+            </svg>
+            <div class="container">
+                <div class="carousel-caption text-end">
+                    <h1><%= postsData[postsData.length -3].title %></h1>
+                    <p>Some representative placeholder content for the third slide of this carousel.</p>
+                    <p><a class="btn btn-lg btn-secondary" href="/selection/<%= postsData[postsData.length-3].id %>">Read</a></p>
+                </div>
+            </div>
+        </div>
+    </div> <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev"> <span
+            class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="visually-hidden">Previous</span>
+    </button> <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+
+<!-- Create Post -->
+<div class="container px-4 py-5">
+    <h2 class="pb-2 border-bottom">Speak to the World—Write a Blog</h2>
+    <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+        <div class="col d-flex flex-column align-items-start gap-2">
+            <h2 class="fw-bold text-body-emphasis">All the Essentials for Great Blogging</h2>
+            <p class="text-body-secondary">Blogging isn’t just writing — it’s your gateway to connecting with people around the world. Share your experiences,
+            opinions, or expertise in a way that reaches beyond your immediate circle.</p> <a href="/post"
+                class="btn btn-secondary btn-lg">Write Post</a>
+        </div>
+        <div class="col">
+            <div class="row row-cols-1 row-cols-sm-2 g-4">
+                <div class="col d-flex flex-column gap-2">
+                    <div
+                        class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-dark bg-gradient fs-4 rounded-3">
+                        <svg class="bi" width="1em" height="1em" aria-hidden="true">
+                            <use xlink:href="#collection"></use>
+                        </svg> </div>
+                    <h4 class="fw-semibold mb-0 text-body-emphasis">Easy-to-Use Editor</h4>
+                    <p class="text-body-secondary">Create posts quickly with a clean, distraction-free writing experience.</p>
+                </div>
+                <div class="col d-flex flex-column gap-2">
+                    <div
+                        class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-dark bg-gradient fs-4 rounded-3">
+                        <svg class="bi" width="1em" height="1em" aria-hidden="true">
+                            <use xlink:href="#gear-fill"></use>
+                        </svg> </div>
+                    <h4 class="fw-semibold mb-0 text-body-emphasis">Instant Publishing</h4>
+                    <p class="text-body-secondary">Share your content with the world in just one click.</p>
+                </div>
+                <div class="col d-flex flex-column gap-2">
+                    <div
+                        class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-dark bg-gradient fs-4 rounded-3">
+                        <svg class="bi" width="1em" height="1em" aria-hidden="true">
+                            <use xlink:href="#speedometer"></use>
+                        </svg> </div>
+                    <h4 class="fw-semibold mb-0 text-body-emphasis">Engage with Readers</h4>
+                    <p class="text-body-secondary">Connect through comments and feedback, building your community.</p>
+                </div>
+                <div class="col d-flex flex-column gap-2">
+                    <div
+                        class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-dark bg-gradient fs-4 rounded-3">
+                        <svg class="bi" width="1em" height="1em" aria-hidden="true">
+                            <use xlink:href="#table"></use>
+                        </svg> </div>
+                    <h4 class="fw-semibold mb-0 text-body-emphasis">Mobile-Friendly Design</h4>
+                    <p class="text-body-secondary">Your blog looks great on any device, anytime, anywhere.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include("partials/footer.ejs") %>
